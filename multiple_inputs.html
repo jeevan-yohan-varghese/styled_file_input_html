@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+    
+    <!---Script for setting the selected file name as text of the label-->
+    <script>
+    
+    
+    
+   window.onload = function () {
+
+             
+
+       
+  
+       
+       ///If you have multiple file inputs
+       var inputs = document.querySelectorAll('.file_upload_input');
+              for (i = 0; i < 3; i++) {       //Looping the inputs so that it would set event listener for all the inputs.
+                                              //The maximum value loop should be the number of inputs that you have(here it is 3)
+                  inputs[i].addEventListener('change', function (e) {
+
+                      
+
+                      var selectedFileName = e.target.value.split('\\').pop();///Getting the selected file name
+                      
+                      
+                      ///Checking if the file name is too big(Optional)
+                      //Otherwise you can use this line::
+                      //document.getElementById(e.target.id).nextElementSibling.innerHTML = selectedFileName;
+                      if (selectedFileName.length > 15) {
+                          shortFileName = selectedFileName.substring(0, 14) + "...";
+                          document.getElementById(e.target.id).nextElementSibling.innerHTML = shortFileName;
+                      } else {
+                          document.getElementById(e.target.id).nextElementSibling.innerHTML = selectedFileName;///Setting the selected file name to the label
+                      }
+
+                      
+                  }
+             );
+              }
+
+
+
+          }
+
+     </script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+ </script>
+
+
+    
+    <!---Setting the window height as height of the div (Just for styling. If you don't need you can skip)-->
+        <script>
+
+$(document).ready(function() {
+  function setHeight() {
+    windowHeight = $(window).innerHeight();
+    $('#main_div').css('height', windowHeight);
+   
+
+
+  };
+  setHeight();
+    
+  
+  $(window).resize(function() {
+    setHeight();
+  });
+});
+</script>
+    <!----Height script end-->
+    
+    
+    <!--CSS---Styling-->
+    <style>
+    
+        @import url('https://fonts.googleapis.com/css?family=Work+Sans:400,500,700&display=swap');
+        *{
+            
+            padding:0;
+            margin: 0;
+            font-family: 'Work Sans', sans-serif;
+
+        }
+        
+        
+        #main_div{
+            
+            background-image:url(images/bg.svg);
+            background-size: cover;
+            background-color: linear-gradient(black,white);
+            padding-top: 20px;
+            box-sizing: border-box;
+            
+            
+            
+        }
+        #multiple_inputs_div{
+             display: flex;
+            
+            width: 60%;
+            
+            margin: 0 auto;
+            
+            padding: 20px;
+            box-sizing: border-box;
+            
+            border-spacing: 3px;
+            justify-content: center;
+            background-image: linear-gradient(#20A3EA,#67B2DA);
+            box-shadow: 0px 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        }
+        
+        
+        .input_container{
+            
+            
+            box-sizing:border-box;
+            text-align: center;
+            padding: 16px 10px;
+            
+        }
+        
+        
+        #inputs_main_div{
+            background-image: linear-gradient(#20A3EA,#67B2DA);
+            box-shadow: 0px 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+            padding: 20px;
+            width: 40%;
+            margin: 0 auto;
+            
+        }
+        #white_bg_div{
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 12px;
+            box-sizing: border-box;
+        }
+        #inputs_container_main_div{
+            
+            display: flex;
+            
+            margin-top: 18px;
+            
+        }
+         #dashed_border_div{
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 12px;
+            width: 100%;
+            box-sizing: border-box;
+             border: 1px dashed #0277bd;
+        }
+        
+        /* Style the label as you wish*/
+         label{
+            
+            background-color:#0277bd;
+            padding:8px 16px;
+            color:white;
+            border-radius: 4px;
+            
+        }
+    </style>
+    </head>
+<body>
+    
+    
+ 
+    
+    <div id="main_div">
+    
+    <div id="inputs_main_div">
+        
+        <div id="white_bg_div">
+        <div id="dashed_border_div">
+        <img src="images/cloud-computing.svg" height="80px" width="80px">
+        <h2>Multiple Inputs</h2>
+            
+            
+            <!-- Really needed part-->
+            <!---Multiple Inputs-->
+        <div id="inputs_container_main_div">
+        <div class="input_container">
+        
+            <input id="file_input_1" type="file" style="display:none;" class="file_upload_input"/>
+            <label for="file_input_1">Upload</label>
+        </div>
+        <div class="input_container">
+        
+            <input id="file_input_2" type="file" style="display:none;" class="file_upload_input"/>
+            <label for="file_input_2">Upload</label>
+        </div>
+        <div class="input_container">
+        
+            <input id="file_input_3" type="file" style="display:none;" class="file_upload_input"/>
+            <label for="file_input_3">Upload</label>
+        </div>
+            </div>
+            
+            <!-- Really needed part end-->
+             <p style="margin-top:18px;font-size:18px;text-align:justify;line-height:130%;">The selected file name is set to the label using <span style="color:#0277bd;">nextElementSibling</span> method so that you can avoid writing seperate functions for each label. (See source for more details). You should keep the label immediately after the invisible input otherwise this method won't work. You can get the uploaded file by referring the input for which we have set the style as display:none</p>
+           
+            </div>
+            </div>
+        </div>
+    
+    </div>
+    </body>
+    
+    
+    <!--Icon credits https://www.flaticon.com-->
+    <!--Jeevan Yohan Varghese
+        dev.jeevanyohan@gmail.com
+        instagram.com/jeevan_yohan_varghese-->
+</html>
