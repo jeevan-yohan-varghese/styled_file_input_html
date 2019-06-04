@@ -1,4 +1,4 @@
-# styled_file_input_html
+# Styling an input type file in html
 This is a sample project which explains how to style an file input using a label in html.
 
 ## Single file input
